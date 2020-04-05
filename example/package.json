@@ -1,7 +1,7 @@
 {
   "name": "@draftcraft/cards-example",
   "homepage": "https://draftcraft.github.io/@draftcraft/cards",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "react": "link:../node_modules/react",
