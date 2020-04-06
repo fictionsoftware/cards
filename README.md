@@ -6,8 +6,16 @@
 
 ## Install
 
+With npm
+
 ```bash
 npm install --save @draftcraft/cards
+```
+
+...or with yarn
+
+```bash
+yarn add @draftcraft/cards
 ```
 
 ## Usage
@@ -15,16 +23,15 @@ npm install --save @draftcraft/cards
 ```tsx
 import React, { Component } from 'react'
 
-import MyComponent from '@draftcraft/cards'
-import '@draftcraft/cards/dist/index.css'
+import { Card } from '@draftcraft/cards';
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <Card />
   }
 }
 ```
 
 ## License
 
-MIT © [draftcraft](https://github.com/draftcraft)
+MIT © [draftcraft](https://github.com/draftcraft) Park City Concepts, LLC d/b/a Draftcraft
