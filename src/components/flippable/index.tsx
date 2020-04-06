@@ -6,14 +6,14 @@ import styles from './index.module.scss';
 
 interface Props {
     flipped: boolean;
-    rotateDirection: RotationType;
+    direction: RotationType;
 }
 
-export const Flippable: FC<Props> = ({ flipped, rotateDirection, children }) => {
-    const direction = rotateDirection === RotationType.HORIZONTAL ? 'Y' : 'X';
+export const Flippable: FC<Props> = ({ flipped, direction, children }) => {
+    const axis = direction === RotationType.HORIZONTAL ? 'Y' : 'X';
     const { transform, opacity } = useSpring({
         opacity: flipped ? 1 : 0,
-        transform: `perspective(600px) rotate${direction}(${flipped ? 180 : 0}deg)`,
+        transform: `perspective(600px) rotate${axis}(${flipped ? 180 : 0}deg)`,
         config: { mass: 5, tension: 500, friction: 80 }
       })
 
@@ -27,7 +27,7 @@ export const Flippable: FC<Props> = ({ flipped, rotateDirection, children }) => 
             </a.div>
             <a.div
                 className={styles.flippable}
-                style={{ opacity, transform: transform.interpolate(t => `${t} rotate${direction}(180deg)`) }}
+                style={{ opacity, transform: transform.interpolate(t => `${t} rotate${axis}(180deg)`) }}
             >
                 {children?.[1] ?? null}
             </a.div>

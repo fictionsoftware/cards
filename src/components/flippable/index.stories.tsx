@@ -24,9 +24,9 @@ const groupId = 'Rotation-Type';
 export const FlippableCard = () => (
   <Flippable
     flipped={boolean("Flipped", false, groupId)}
-    rotateDirection={select('Rotate Direction', options, defaultValue, groupId)}
+    direction={select('Rotate Direction', options, defaultValue, groupId)}
   >
-    <div style={ {backgroundColor: '#99ccee', width: 75, height: 75 } }>Hello Front Side</div>
-    <div style={ {backgroundColor: '#ddaa55', width: 50, height: 50 } }>Hello Back Side</div>
+    <div style={ {backgroundColor: '#99ccee', width: 75, height: 75 } }>Front Side Example</div>
+    <div style={ {backgroundColor: '#ddaa55', width: 50, height: 50 } }>Back Side Example</div>
   </Flippable>
 );
