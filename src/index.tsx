@@ -1,2 +1,2 @@
 export { PaginationDots } from './components/pagination-dots';
-export { Card } from './components/card';
+export { Flippable } from './components/flippable';
