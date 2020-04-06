@@ -2,6 +2,6 @@ import React, { FC } from 'react';
 
 export const Card: FC = () => {
     return (
-        <div>Card</div>
+        <div>This is a Card</div>
     );
 };
