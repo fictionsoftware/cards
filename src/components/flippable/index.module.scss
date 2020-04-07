@@ -1,4 +1,15 @@
 .flippable {
     will-change: transform, opacity;
-    position: absolute;
+    position: relative;
+}
+
+.outer {
+    display: grid;
+    grid-template: 1fr / 1fr;
+    place-items: center;
+}
+
+.outer > * {
+    grid-column: 1 / 1;
+    grid-row: 1 / 1;
 }

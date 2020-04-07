@@ -23,19 +23,23 @@ const defaultValue = RotationType.HORIZONTAL;
 const groupId = 'Rotation-Type';
 
 export const FlippableCard = () => (
+  <div style={{ width: 200}}>
   <Flippable
     flipped={boolean("Flipped", false, groupId)}
     direction={select('Rotate Direction', options, defaultValue, groupId)}
+    size={number('size', 200)}
   >
     <div style={ {backgroundColor: '#99ccee', width: 75, height: 75 } }>Front Side Example</div>
     <div style={ {backgroundColor: '#ddaa55', width: 50, height: 50 } }>Back Side Example</div>
   </Flippable>
+  </div>
 );
 
 export const FlippableWithBasicCard = () => (
   <Flippable
     flipped={boolean("Flipped", false, groupId)}
     direction={select('Rotate Direction', options, defaultValue, groupId)}
+    size={number('size', 200)}
   >
     <BasicCard
       shadow={boolean('shadow', true)}
