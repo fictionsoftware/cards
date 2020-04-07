@@ -1,12 +1,13 @@
 import * as React from 'react';
 
-import { boolean, select, withKnobs } from "@storybook/addon-knobs";
+import { boolean, number, select, withKnobs } from "@storybook/addon-knobs";
 
+import { BasicCard } from '../BasicCard';
 import { Flippable } from '.';
 import { RotationType } from '../../models/enums/rotation-type';
 
 export default {
-  title: 'Components',
+  title: 'Flippable',
   parameters: {
     info: { inline: true },
   },
@@ -28,5 +29,74 @@ export const FlippableCard = () => (
   >
     <div style={ {backgroundColor: '#99ccee', width: 75, height: 75 } }>Front Side Example</div>
     <div style={ {backgroundColor: '#ddaa55', width: 50, height: 50 } }>Back Side Example</div>
+  </Flippable>
+);
+
+export const FlippableWithBasicCard = () => (
+  <Flippable
+    flipped={boolean("Flipped", false, groupId)}
+    direction={select('Rotate Direction', options, defaultValue, groupId)}
+  >
+    <BasicCard
+      shadow={boolean('shadow', true)}
+      size={number('size', 200)}
+    >
+      Front Side of Card
+      <br />
+      1
+      <br />
+      2
+      <br />
+      3
+      <br />
+      4
+      <br />
+      5
+      <br />
+      6
+      <br />
+      7
+      <br />
+      8
+      <br />
+      9
+      <br />
+      10
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      ...
+    </BasicCard>
+    <BasicCard
+      shadow={boolean('shadow', true)}
+      size={number('size', 200)}
+      imgUrl={'https://www.udemy.com/blog/wp-content/uploads/2014/05/shutterstock_1076588481.jpg'}
+    >
+      Back Side of Card
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      ...
+    </BasicCard>
   </Flippable>
 );

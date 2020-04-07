@@ -1,0 +1,19 @@
+.BasicCard {
+    display: flex;
+    flex-direction: column;
+    .image {
+        img {
+           width: 100%;
+           object-fit: cover;
+        }
+    }
+    .content {
+        flex-grow: 1;
+        overflow: scroll;
+    }
+}
+
+.BasicCard__shadow {
+    @extend .BasicCard;
+    box-shadow: 0 2px 14px rgba(202,202,202,.5);
+}
