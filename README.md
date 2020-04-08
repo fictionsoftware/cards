@@ -26,7 +26,7 @@ Given the nature of a card, the majority of features are predicated on a fixed w
 as 1.5 times the height of the width for a desireable ratio. As such the `Size` enum is a property that will be passed
 to many components.
 
-Possible values for the size enum that is passed to the size prop:
+Possible values for the Size enum that is passed to the `size` prop in components:
 
 | Enum Label  | Value |
 |-------------|-------|
