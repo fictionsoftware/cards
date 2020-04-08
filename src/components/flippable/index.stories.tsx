@@ -42,6 +42,7 @@ export const FlippableWithBasicCard = () => (
     size={number('size', 200)}
   >
     <BasicCard
+      rounded
       shadow={boolean('shadow', true)}
       size={number('size', 200)}
     >
@@ -77,6 +78,7 @@ export const FlippableWithBasicCard = () => (
       ...
     </BasicCard>
     <BasicCard
+      rounded
       shadow={boolean('shadow', true)}
       size={number('size', 200)}
       imgUrl={'https://www.udemy.com/blog/wp-content/uploads/2014/05/shutterstock_1076588481.jpg'}
