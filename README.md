@@ -38,6 +38,17 @@ export const Example = (props) => {
 }
 ```
 
+Possible values for the size enum that is passed to the size prop:
+
+| Enum Label  | Value |
+|-------------|-------|
+| Size.SMALL  | 100   |
+| Size.MEDIUM | 200   |
+| Size.LARGE  | 300   |
+| Size.XLARGE | 400   |
+
+You can also provide any numerical value to the size prop.
+
 ## License
 
 MIT © [draftcraft](https://github.com/draftcraft) Park City Concepts, LLC dba Draftcraft
