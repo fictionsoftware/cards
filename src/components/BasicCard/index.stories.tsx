@@ -15,6 +15,7 @@ export default {
 export const _BasicCard = () => (
   <BasicCard
     shadow={boolean('shadow', false)}
+    rounded={boolean('rounded', false)}
     size={number('size', 350)}
     imgUrl={'https://www.udemy.com/blog/wp-content/uploads/2014/05/shutterstock_1076588481.jpg'}
   >

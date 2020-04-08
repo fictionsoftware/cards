@@ -7,13 +7,24 @@
            object-fit: cover;
         }
     }
+    .image__rounded {
+        @extend .image;
+        img {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+    }
     .content {
         flex-grow: 1;
         overflow: scroll;
     }
 }
 
-.BasicCard__shadow {
-    @extend .BasicCard;
+.shadow {
     box-shadow: 0 2px 14px rgba(202,202,202,.5);
 }
+
+.rounded {
+    border-radius: 15px;
+}
+
