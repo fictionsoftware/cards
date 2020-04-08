@@ -26,6 +26,19 @@ Given the nature of a card, the majority of features are predicated on a fixed w
 as 1.5 times the height of the width for a desireable ratio. As such the `Size` enum is a property that will be passed
 to many components.
 
+Possible values for the size enum that is passed to the size prop:
+
+| Enum Label  | Value |
+|-------------|-------|
+| Size.SMALL  | 100   |
+| Size.MEDIUM | 200   |
+| Size.LARGE  | 300   |
+| Size.XLARGE | 400   |
+
+You can also provide any numerical value to the size prop.
+
+### Basic Card
+
 ```tsx
 import React, { Component } from 'react'
 
@@ -38,16 +51,7 @@ export const Example = (props) => {
 }
 ```
 
-Possible values for the size enum that is passed to the size prop:
 
-| Enum Label  | Value |
-|-------------|-------|
-| Size.SMALL  | 100   |
-| Size.MEDIUM | 200   |
-| Size.LARGE  | 300   |
-| Size.XLARGE | 400   |
-
-You can also provide any numerical value to the size prop.
 
 ## License
 
