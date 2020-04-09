@@ -1,20 +1,19 @@
 import React, { FC } from 'react';
-import { RotationType, Size } from '../../models';
 import { animated as a, useSpring } from 'react-spring';
 
+import { RotationType } from '../../models';
 import styles from './index.module.scss';
 
 interface Props {
     flipped: boolean;
     direction: RotationType;
-    size: Size;
 }
 
-export const Flippable: FC<Props> = ({ flipped, direction, size, children }) => {
+export const Flippable: FC<Props> = ({ flipped, direction, children }) => {
     const axis = direction === RotationType.HORIZONTAL ? 'Y' : 'X';
     const { transform, opacity } = useSpring({
         opacity: flipped ? 1 : 0,
-        transform: `perspective(600px) rotate${axis}(${flipped ? 180 : 0}deg)`,
+        transform: `perspective(300px) rotate${axis}(${flipped ? 180 : 0}deg)`,
         config: { mass: 5, tension: 500, friction: 80 }
       })
 

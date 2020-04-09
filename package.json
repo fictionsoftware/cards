@@ -14,6 +14,7 @@
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "lint": "cd src/ && prettier --write . && cd ..",
     "start:storybook": "start-storybook -p 9009 -s public",
     "prepublish": "run-s build",
     "test": "run-s test:unit test:lint test:build",
@@ -34,6 +35,7 @@
     "@storybook/preset-create-react-app": "^2.1.1",
     "@storybook/react": "^5.3.18",
     "@types/react": "^16.9.32",
+    "@types/react-swipeable-views": "^0.13.0",
     "babel-eslint": "^10.0.3",
     "cross-env": "^7.0.2",
     "css-loader": "^3.4.2",
@@ -63,6 +65,7 @@
   ],
   "dependencies": {
     "clsx": "^1.1.0",
-    "react-spring": "^8.0.27"
+    "react-spring": "^8.0.27",
+    "react-swipeable-views": "^0.13.9"
   }
 }
