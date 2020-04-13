@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { boolean, number, select, withKnobs } from "@storybook/addon-knobs";
 
-import { BasicCard } from '../BasicCard';
+import { Card } from '../Card';
 import { Flippable } from '.';
 import { RotationType } from '../../models/enums/rotation-type';
 
@@ -27,7 +27,6 @@ export const FlippableCard = () => (
   <Flippable
     flipped={boolean("Flipped", false, groupId)}
     direction={select('Rotate Direction', options, defaultValue, groupId)}
-    size={number('size', 200)}
   >
     <div style={ {backgroundColor: '#99ccee', width: 75, height: 75 } }>Front Side Example</div>
     <div style={ {backgroundColor: '#ddaa55', width: 50, height: 50 } }>Back Side Example</div>
@@ -39,9 +38,8 @@ export const FlippableWithBasicCard = () => (
   <Flippable
     flipped={boolean("Flipped", false, groupId)}
     direction={select('Rotate Direction', options, defaultValue, groupId)}
-    size={number('size', 200)}
   >
-    <BasicCard
+    <Card
       rounded
       shadow={boolean('shadow', true)}
       size={number('size', 200)}
@@ -76,8 +74,8 @@ export const FlippableWithBasicCard = () => (
       <br />
       <br />
       ...
-    </BasicCard>
-    <BasicCard
+    </Card>
+    <Card
       rounded
       shadow={boolean('shadow', true)}
       size={number('size', 200)}
@@ -103,6 +101,6 @@ export const FlippableWithBasicCard = () => (
       <br />
       <br />
       ...
-    </BasicCard>
+    </Card>
   </Flippable>
 );

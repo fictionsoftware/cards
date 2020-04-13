@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { boolean, number, withKnobs } from "@storybook/addon-knobs";
 
-import { BasicCard } from '.';
+import { Card } from '.';
 
 export default {
   title: 'BasicCard',
@@ -13,7 +13,7 @@ export default {
 };
 
 export const _BasicCard = () => (
-  <BasicCard
+  <Card
     shadow={boolean('shadow', false)}
     rounded={boolean('rounded', false)}
     size={number('size', 350)}
@@ -48,5 +48,5 @@ export const _BasicCard = () => (
     <br />
     <br />
     ...
-  </BasicCard>
+  </Card>
 );

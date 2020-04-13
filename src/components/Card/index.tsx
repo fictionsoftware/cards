@@ -15,8 +15,8 @@ interface Props {
   className?: string;
 }
 
-export const BasicCard: FC<Props> = ({ imgUrl, imgAlt, size, shadow, rounded, style, className, children }) => {
-  const resolveClassName = clsx({[styles.shadow]: shadow, [styles.rounded]: rounded}, styles.BasicCard, className !== undefined && className);
+export const Card: FC<Props> = ({ imgUrl, imgAlt, size, shadow, rounded, style, className, children }) => {
+  const resolveClassName = clsx({[styles.shadow]: shadow, [styles.rounded]: rounded}, styles.Card, className !== undefined && className);
   const imageStyles = rounded ? styles.image__rounded : styles.image;
   
   return (
