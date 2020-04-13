@@ -3,21 +3,38 @@ import React, {
   useEffect,
   useState
 } from 'react';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-// import { PaginationDots } from '../pagination-dots';
+import CSS from 'csstype';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { PaginationDots } from '../pagination-dots';
 import { Size } from '../../models';
 import SwipeableViews from 'react-swipeable-views';
+import clsx from 'clsx';
 import styles from './index.module.scss';
 
 interface Props {
   cardSize: Size | number;
   spacing: number;
+  showPagination?: boolean;
+  showArrows?: boolean;
+  style?: CSS.Properties;
+  className?: string;
 }
 
-export const CardCarousel: FC<Props> = ({ cardSize, spacing, children }) => {
+export const CardCarousel: FC<Props> = ({
+  cardSize,
+  spacing,
+  showPagination,
+  showArrows,
+  style,
+  className,
+  children
+}) => {
   const { toArray } = React.Children;
   const [index, setIndex] = useState<number>(0);
   const [width, setWidth] = useState<number>(window.innerWidth);
+  const resolveClassName = clsx(styles.CardCarousel, className !== undefined && className);
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
@@ -45,17 +62,41 @@ export const CardCarousel: FC<Props> = ({ cardSize, spacing, children }) => {
       </div>);
 
   return (
-    <div className={ styles.CardCarousel }>
-      { /* Add Left Arrow */ }
-      <SwipeableViews
-        index={index}
-        onChangeIndex={setIndex}
-        enableMouseEvents
-      >
-        {renderSections()}
-      </SwipeableViews>
-      { /* Add Right Arrow */ }
-      { /* Add Pagination Dots */ }
+    <div className={ resolveClassName } style={{...style}}>
+      <div className={styles.container}>
+        { 
+          showArrows !== false && index > 0 ?
+            <div className={styles.chevron} onClick={() => setIndex(index - 1)}>
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </div>
+          : null
+        }
+        <SwipeableViews
+          index={index}
+          onChangeIndex={setIndex}
+          enableMouseEvents
+        >
+          {renderSections()}
+        </SwipeableViews>
+        { 
+          showArrows !== false && index < numOfPages - 1 ?
+            <div className={styles.chevron} onClick={() => setIndex(index + 1)}>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </div>
+          : null
+        }
+      </div>
+      {
+        showPagination !== false
+        ? (<div className={styles.pagination}>
+            <PaginationDots
+              numOfPages={numOfPages}
+              currentPage={index}
+              onPageSelect={setIndex}
+            />
+          </div>)
+        : null
+      }
     </div>
   );
 };

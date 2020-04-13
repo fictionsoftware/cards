@@ -12,14 +12,15 @@ interface Props {
   shadow?: boolean;
   rounded?: boolean;
   style?: CSS.Properties;
+  className?: string;
 }
 
-export const BasicCard: FC<Props> = ({ imgUrl, imgAlt, size, shadow, rounded, style, children }) => {
-  const getStyle = clsx({[styles.shadow]: shadow, [styles.rounded]: rounded}, styles.BasicCard);
+export const BasicCard: FC<Props> = ({ imgUrl, imgAlt, size, shadow, rounded, style, className, children }) => {
+  const resolveClassName = clsx({[styles.shadow]: shadow, [styles.rounded]: rounded}, styles.BasicCard, className !== undefined && className);
   const imageStyles = rounded ? styles.image__rounded : styles.image;
   
   return (
-    <div className={ getStyle } style={{ ...style, width: size, height: size * 1.5 }}> 
+    <div className={ resolveClassName } style={{ ...style, width: size, height: size * 1.5 }}> 
       { imgUrl ? 
           <div className={imageStyles}>
             <img src={imgUrl} alt={ imgAlt ?? ''} />

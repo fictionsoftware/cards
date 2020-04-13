@@ -1,7 +1,23 @@
 // @import '../../styles/variables.scss';
 
 .CardCarousel {
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .chevron {
+        cursor: pointer;
+        color: #838383;
+    }
+
     .content {
         display: flex;
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

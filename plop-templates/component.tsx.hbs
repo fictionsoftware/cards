@@ -1,13 +1,17 @@
 import React, { FC } from 'react';
+import clsx from 'clsx';
 import styles from './index.module.scss';
 
 interface Props {
-
+    style?: CSS.Properties;
+    className?: string;
 }
 
-export const {{pascalCase name}}: FC<Props> = (props) => {
+export const {{pascalCase name}}: FC<Props> = ({ style, className }) => {
+  const resolveClassName = clsx(styles.{{pascalCase name}}, className !== undefined && className);
+
   return (
-    <div className={ styles.{{pascalCase name}} }>
+    <div className={ resolveClassName } style={{...style}}>
       {{pascalCase name}}
     </div>
   );
