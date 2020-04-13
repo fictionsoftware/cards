@@ -1,4 +1,4 @@
-import { BasicCard, Flippable } from '../..';
+import { Card, Flippable } from '../..';
 import React, { useState } from 'react';
 import { RotationType, Size } from '../../models';
 
@@ -30,7 +30,7 @@ export const _CardCarousel = () => {
       Array(15).fill(null).map((_, index) => {
         return (
           <Flippable flipped={flipped[index % 5]} direction={RotationType.HORIZONTAL} key={index}>
-            <BasicCard size={Size.LARGE} shadow style={{ margin: '10px'}}>
+            <Card size={Size.LARGE} shadow style={{ margin: '10px'}}>
               <div
                 style={{
                   display: 'flex',
@@ -43,8 +43,8 @@ export const _CardCarousel = () => {
               >
                 Hello World
               </div>
-            </BasicCard>
-            <BasicCard size={Size.LARGE} shadow style={{ margin: '10px'}}>
+            </Card>
+            <Card size={Size.LARGE} shadow style={{ margin: '10px'}}>
               <div
                 style={{
                   display: 'flex',
@@ -57,7 +57,7 @@ export const _CardCarousel = () => {
               >
                 The Back side
               </div>
-            </BasicCard>
+            </Card>
           </Flippable>
         )
       })
