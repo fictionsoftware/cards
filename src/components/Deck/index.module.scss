@@ -1,0 +1,12 @@
+// @import '../../styles/variables.scss';
+
+.Deck {
+    display: grid;
+    grid-template: 1fr / 1fr;
+    place-items: center;
+    
+    > * {
+        grid-column: 1 / 1;
+        grid-row: 1 / 1;
+    }
+}

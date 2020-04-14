@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import clsx from 'clsx';
+import CSS from 'csstype';
 import styles from './index.module.scss';
 
 interface Props {
@@ -11,7 +12,7 @@ export const {{pascalCase name}}: FC<Props> = ({ style, className }) => {
   const resolveClassName = clsx(styles.{{pascalCase name}}, className !== undefined && className);
 
   return (
-    <div className={ resolveClassName } style={{...style}}>
+    <div className={ resolveClassName } style={ { ...style } }>
       {{pascalCase name}}
     </div>
   );
