@@ -2,26 +2,42 @@ import React, { Children, FC, useState } from 'react';
 import { animated, interpolate, useSprings } from 'react-spring';
 
 import CSS from 'csstype';
+import Draggable from 'react-draggable';
 import clsx from 'clsx';
 import styles from './index.module.scss';
-import { useGesture } from 'react-use-gesture';
 
 interface Props {
     style?: CSS.Properties;
     className?: string;
+    offsetRange?: number;
 }
 
-const to = (i: number) => ({ x: 0, y: i * -4, scale: 1, rot: -10 + Math.random() * 20, delay: i * 100 });
-const from = () => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
-const trans = (r: number, s: number) => `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
-
-export const Deck: FC<Props> = ({ style, className, children }) => {
+export const Deck: FC<Props> = ({ style, className, offsetRange, children }) => {
   const resolveClassName = clsx(styles.Deck, className !== undefined && className);
   const cards = Children.toArray(children);
+  const randomRange = (min: number, max: number) => {
+    return Math.random() * (max - min) + min;
+  }
+
+  const resolveInnerStyle = (index: number) => 
+  offsetRange !== undefined
+    ? {
+      zIndex: index,
+      transform: `rotate(${randomRange(-1 * offsetRange, offsetRange)}deg)`
+    }
+    : {
+      zIndex: index,
+    };
 
   return (
     <div className={ resolveClassName } style={{...style}}>
-      {cards.map((card, index) => <div key={index} style={{ zIndex: index}}>{card}</div>)}
+      {cards.map((card, index) => (
+        <div style={resolveInnerStyle(index)} key={index}>
+          <Draggable>
+            {card}
+          </Draggable>
+        </div>
+      ))}
     </div>
   );
 };
