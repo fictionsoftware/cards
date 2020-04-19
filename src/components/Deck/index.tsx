@@ -1,42 +1,56 @@
+import { EventData, Swipeable } from 'react-swipeable';
 import React, { Children, FC, useState } from 'react';
-import { animated, interpolate, useSprings } from 'react-spring';
 
 import CSS from 'csstype';
-import Draggable from 'react-draggable';
 import clsx from 'clsx';
 import styles from './index.module.scss';
 
 interface Props {
+    onSwipeLeft?: () => void;
+    onSwipeRight?: () => void;
     style?: CSS.Properties;
     className?: string;
-    offsetRange?: number;
 }
 
-export const Deck: FC<Props> = ({ style, className, offsetRange, children }) => {
+export const Deck: FC<Props> = ({ onSwipeLeft, onSwipeRight, style, className, children }) => {
   const resolveClassName = clsx(styles.Deck, className !== undefined && className);
   const cards = Children.toArray(children);
-  const randomRange = (min: number, max: number) => {
-    return Math.random() * (max - min) + min;
-  }
+  const [cardsState, setCardsState] = useState(Array(cards.length).fill(null));
+  const resolveInnerClassName = (index: number) => 
+    cardsState[index] === 'Right'
+      ? styles.slideRight
+      : cardsState[index] === 'Left'
+      ? styles.slideLeft
+      : undefined;
 
-  const resolveInnerStyle = (index: number) => 
-  offsetRange !== undefined
-    ? {
+  const resolveInnerStyle = (index: number) => ({
       zIndex: index,
-      transform: `rotate(${randomRange(-1 * offsetRange, offsetRange)}deg)`
+    });
+
+  const handleSwipe = (e: EventData, index: number) => {
+    const newState = cardsState.map((cardState, i) => i === index ? e.dir : cardState);
+    setCardsState(newState);
+    if (e.dir === 'Left') {
+      if (onSwipeLeft !== undefined) onSwipeLeft();
+    } 
+
+    if (e.dir === 'Right') {
+      if (onSwipeRight !== undefined) onSwipeRight();
     }
-    : {
-      zIndex: index,
-    };
+  };
 
   return (
     <div className={ resolveClassName } style={{...style}}>
       {cards.map((card, index) => (
-        <div style={resolveInnerStyle(index)} key={index}>
-          <Draggable>
+        <Swipeable
+          trackMouse
+          onSwiped={(e: EventData) => handleSwipe(e, index)}
+          key={index}
+        >
+          <div style={resolveInnerStyle(index)} className={resolveInnerClassName(index)}>
             {card}
-          </Draggable>
-        </div>
+          </div>
+        </Swipeable>
       ))}
     </div>
   );

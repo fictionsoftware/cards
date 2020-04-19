@@ -15,15 +15,18 @@ const randomRange = (min: number, max: number) => {
 }
 
 export const _Deck = () => {
+  const swipeRight = () => console.log('right');
+  const swipeLeft = () => console.log('left');
+
   return (
-    <Deck offsetRange={4}>
+    <Deck onSwipeLeft={swipeLeft} onSwipeRight={swipeRight}>
       {
         Array(5)
           .fill(null)
           .map((_, index) =>
             <div
               key={index}
-              style={{ backgroundColor: colors[index], width: 300, height: 450}}
+              style={{ backgroundColor: colors[index], width: 300, height: 450, transform: `rotate(${randomRange(-1 * 4, 4)}deg)`}}
             >
               {`${Math.random()} Card number ${index}`}
             </div>

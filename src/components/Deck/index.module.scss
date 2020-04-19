@@ -9,4 +9,20 @@
         grid-column: 1 / 1;
         grid-row: 1 / 1;
     }
+
+    .slideRight {
+        animation: slide-right 1s forwards;
+    }
+
+    .slideLeft {
+        animation: slide-left 1s forwards;
+    }
+
+    @keyframes slide-left {
+        to {transform: translateX(-1000%); display: none;}
+    }
+
+    @keyframes slide-right {
+        to {transform: translateX(1000%); display: none;}
+    }
 }
