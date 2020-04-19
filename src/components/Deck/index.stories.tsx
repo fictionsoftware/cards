@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { Deck } from '.';
+import { boolean } from "@storybook/addon-knobs";
 
 export default {
   title: 'Deck',
@@ -19,7 +20,7 @@ export const _Deck = () => {
   const swipeLeft = () => console.log('left');
 
   return (
-    <Deck onSwipeLeft={swipeLeft} onSwipeRight={swipeRight}>
+    <Deck swipeable={boolean('Swipeable', true)} onSwipeLeft={swipeLeft} onSwipeRight={swipeRight}>
       {
         Array(5)
           .fill(null)

@@ -6,13 +6,14 @@ import clsx from 'clsx';
 import styles from './index.module.scss';
 
 interface Props {
+    swipeable?: boolean;
     onSwipeLeft?: () => void;
     onSwipeRight?: () => void;
     style?: CSS.Properties;
     className?: string;
 }
 
-export const Deck: FC<Props> = ({ onSwipeLeft, onSwipeRight, style, className, children }) => {
+export const Deck: FC<Props> = ({ swipeable, onSwipeLeft, onSwipeRight, style, className, children }) => {
   const resolveClassName = clsx(styles.Deck, className !== undefined && className);
   const cards = Children.toArray(children);
   const [cardsState, setCardsState] = useState(Array(cards.length).fill(null));
@@ -39,19 +40,23 @@ export const Deck: FC<Props> = ({ onSwipeLeft, onSwipeRight, style, className, c
     }
   };
 
+  const renderContent = (card: any, index: number) => (
+    <div style={resolveInnerStyle(index)} className={resolveInnerClassName(index)}>
+      {card}
+    </div>
+  )
+
   return (
     <div className={ resolveClassName } style={{...style}}>
-      {cards.map((card, index) => (
+      {cards.map((card, index) => swipeable ? (
         <Swipeable
           trackMouse
           onSwiped={(e: EventData) => handleSwipe(e, index)}
           key={index}
         >
-          <div style={resolveInnerStyle(index)} className={resolveInnerClassName(index)}>
-            {card}
-          </div>
+          {renderContent(card, index)}
         </Swipeable>
-      ))}
+      ) : renderContent(card,index))}
     </div>
   );
 };

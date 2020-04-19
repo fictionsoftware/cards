@@ -1,0 +1,17 @@
+// @import '../../styles/variables.scss';
+
+.Action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 14px rgba(202,202,202,.5);
+    padding: 10px;
+    margin: 10px;
+    height: 75px;
+    width: 75px;
+    flex-shrink: 0;
+}
+
+.circle {
+    border-radius: 50%;
+}
