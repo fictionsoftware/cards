@@ -1,8 +1,9 @@
 {
   "name": "@draftcraft/cards",
-  "version": "0.1.0",
+  "version": "0.1.0-rc.1",
   "description": "Comprehensive React Cards library",
   "author": "draftcraft",
+  "scope": "@draftcraft",
   "license": "MIT",
   "repository": "https://github.com/draftcraft/cards",
   "main": "dist/index.js",
