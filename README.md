@@ -19,6 +19,13 @@ npm install --save @draftcraft/cards
 ```bash
 yarn add @draftcraft/cards
 ```
+## Styles
+
+Add the `cards`  style to your project by importing the stylesheet:
+
+```
+import "@draftcraft/cards/dist/index.css";
+```
 
 ## Usage
 
@@ -44,6 +51,7 @@ The basic card component comes with a few stylistic options that wrap the childr
 passed to it.
 
 ```tsx
+import "@draftcraft/cards/dist/index.css";
 import React, { Component } from 'react'
 
 import { Card, Size } from '@draftcraft/cards';
@@ -77,6 +85,7 @@ export const Example = (props) => {
 `Flippable` is a component that can flip content from one side to the other. It takes children but only renders the first two children given to it. The first child will render on the front of the flippable content and the second child will render on the back. Any content can be passed to flippable as a child. Below is an example of a flippable `Card`.
 
 ```tsx
+import "@draftcraft/cards/dist/index.css";
 import React, { Component } from 'react'
 
 import { Flippable, Card, Size } from '@draftcraft/cards';
@@ -120,6 +129,7 @@ with the option to swipe them left or right. You can provide functions as props 
 determine what might occur when a card is swiped left vs right.
 
 ```tsx
+import "@draftcraft/cards/dist/index.css";
 import React, { Component } from 'react'
 
 import { Deck, Card, Size } from '@draftcraft/cards';
@@ -176,6 +186,7 @@ accurately calculate the number of children that should render on each page. The
 implementation of the `CardCarousel` component uses another component, `PaginationDots`, which can be used separately for other implementations if you like.
 
 ```tsx
+import "@draftcraft/cards/dist/index.css";
 import React, { Component } from 'react'
 
 import { CardCarousel, Card, Size } from '@draftcraft/cards';
@@ -226,6 +237,7 @@ export const Example = (props) => {
 ### Pagination Dots
 
 ```tsx
+import "@draftcraft/cards/dist/index.css";
 import React, { Component, useState } from 'react'
 
 import { PaginationDots } from '@draftcraft/cards';
@@ -255,6 +267,7 @@ or a bullet point in many cases and can be shaped as a circle (like a poker chip
 or a rectangle.
 
 ```tsx
+import "@draftcraft/cards/dist/index.css";
 import React, { Component } from 'react'
 
 import { Action, Shape } from '@draftcraft/cards';
@@ -286,6 +299,7 @@ additional details to the right. It must be provided a `description` prop that w
 display text next to the `Action` component and can optionally also be given a `title`.
 
 ```tsx
+import "@draftcraft/cards/dist/index.css";
 import React, { Component } from 'react'
 
 import { ActionDetails, Shape } from '@draftcraft/cards';
