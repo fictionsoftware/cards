@@ -1,6 +1,6 @@
 {
   "name": "@draftcraft/cards",
-  "version": "0.1.0-rc.3",
+  "version": "0.1.1-rc.1",
   "description": "Comprehensive React Cards library",
   "author": "draftcraft",
   "scope": "@draftcraft",
@@ -25,7 +25,8 @@
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build",
-    "generate": "plop"
+    "generate": "plop",
+    "publish:public": "npm publish --access public"
   },
   "peerDependencies": {
     "react": "^16.8.0",
@@ -73,5 +74,8 @@
     "react-spring": "^8.0.27",
     "react-swipeable": "^5.5.1",
     "react-swipeable-views": "^0.13.9"
+  },
+  "resolutions": {
+    "websocket-extensions": "^0.1.4"
   }
 }
