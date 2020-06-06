@@ -5,3 +5,4 @@ export { Card } from './components/Card';
 export { Action } from './components/action';
 export { ActionDetails } from './components/action-details';
 export { Deck } from './components/Deck';
+export * from './models';
