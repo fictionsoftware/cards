@@ -8,7 +8,7 @@ import styles from "./index.module.scss";
 interface Props {
   size: Size | number;
   imgUrl?: string;
-  imgPosition?: "top" | "bottom";
+  imgPosition?: string;
   imgAlt?: string;
   shadow?: boolean;
   rounded?: boolean;
@@ -34,9 +34,7 @@ export const Card: FC<Props> = ({
   );
   const imageStyles = clsx({
     [styles.image__rounded]: rounded,
-    [styles.image]: !rounded,
-    [styles.top__position]: imgPosition === "top" || imgPosition == undefined,
-    [styles.bottom__position]: imgPosition === "bottom"
+    [styles.image]: !rounded
   });
 
   return (
@@ -49,7 +47,10 @@ export const Card: FC<Props> = ({
           <img
             src={imgUrl}
             alt={imgAlt ?? ""}
-            style={{ maxHeight: (size * 1.5) / 2 }}
+            style={{
+              maxHeight: (size * 1.5) / 2,
+              objectPosition: imgPosition ?? "center top"
+            }}
           />
         </div>
       ) : null}
