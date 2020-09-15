@@ -1,13 +1,14 @@
-import React, { FC } from 'react';
+import React, { FC } from "react";
 
-import CSS from 'csstype';
-import { Size } from '../../models';
-import clsx from 'clsx';
-import styles from './index.module.scss';
+import CSS from "csstype";
+import { Size } from "../../models";
+import clsx from "clsx";
+import styles from "./index.module.scss";
 
 interface Props {
   size: Size | number;
   imgUrl?: string;
+  imgPosition?: "top" | "bottom";
   imgAlt?: string;
   shadow?: boolean;
   rounded?: boolean;
@@ -15,21 +16,44 @@ interface Props {
   className?: string;
 }
 
-export const Card: FC<Props> = ({ imgUrl, imgAlt, size, shadow, rounded, style, className, children }) => {
-  const resolveClassName = clsx({[styles.shadow]: shadow, [styles.rounded]: rounded}, styles.Card, className !== undefined && className);
-  const imageStyles = rounded ? styles.image__rounded : styles.image;
-  
+export const Card: FC<Props> = ({
+  imgUrl,
+  imgPosition,
+  imgAlt,
+  size,
+  shadow,
+  rounded,
+  style,
+  className,
+  children
+}) => {
+  const resolveClassName = clsx(
+    { [styles.shadow]: shadow, [styles.rounded]: rounded },
+    styles.Card,
+    className !== undefined && className
+  );
+  const imageStyles = clsx({
+    [styles.image__rounded]: rounded,
+    [styles.image]: !rounded,
+    [styles.top__position]: imgPosition === "top" || imgPosition == undefined,
+    [styles.bottom__position]: imgPosition === "bottom"
+  });
+
   return (
-    <div className={ resolveClassName } style={{ ...style, width: size, height: size * 1.5 }}> 
-      { imgUrl ? 
-          <div className={imageStyles}>
-            <img src={imgUrl} alt={ imgAlt ?? ''} />
-          </div>
-          : null
-      }
-      <div className={styles.content}>
-        {children}
-      </div>
+    <div
+      className={resolveClassName}
+      style={{ ...style, width: size, height: size * 1.5 }}
+    >
+      {imgUrl ? (
+        <div className={imageStyles}>
+          <img
+            src={imgUrl}
+            alt={imgAlt ?? ""}
+            style={{ maxHeight: (size * 1.5) / 2 }}
+          />
+        </div>
+      ) : null}
+      <div className={styles.content}>{children}</div>
     </div>
   );
 };
