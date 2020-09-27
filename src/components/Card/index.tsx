@@ -44,11 +44,11 @@ export const Card: FC<Props> = ({
       className={resolveClassName}
       style={{ ...style, width: size, height: size * 1.5 }}
     >
-      {imgUrl ? (
+      {imgUrl && typeof imgUrl === "string" ? (
         <div className={imageStyles}>
           <img
             onClick={onImgClick}
-            src={imgUrl as any}
+            src={imgUrl}
             alt={imgAlt ?? ""}
             style={{
               maxHeight: (size * 1.5) / 2,
@@ -56,6 +56,8 @@ export const Card: FC<Props> = ({
             }}
           />
         </div>
+      ) : imgUrl ? (
+        { imgUrl }
       ) : null}
       <div className={styles.content}>{children}</div>
     </div>
