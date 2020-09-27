@@ -9,6 +9,7 @@ interface Props {
   size: Size | number;
   imgUrl?: string;
   imgPosition?: string;
+  onImgClick?: () => void;
   imgAlt?: string;
   shadow?: boolean;
   rounded?: boolean;
@@ -19,6 +20,7 @@ interface Props {
 export const Card: FC<Props> = ({
   imgUrl,
   imgPosition,
+  onImgClick,
   imgAlt,
   size,
   shadow,
@@ -45,6 +47,7 @@ export const Card: FC<Props> = ({
       {imgUrl ? (
         <div className={imageStyles}>
           <img
+            onClick={onImgClick}
             src={imgUrl}
             alt={imgAlt ?? ""}
             style={{
