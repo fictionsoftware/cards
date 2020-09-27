@@ -7,7 +7,7 @@ import styles from "./index.module.scss";
 
 interface Props {
   size: Size | number;
-  imgUrl?: string;
+  imgUrl?: string | JSX.Element;
   imgPosition?: string;
   onImgClick?: () => void;
   imgAlt?: string;
@@ -48,7 +48,7 @@ export const Card: FC<Props> = ({
         <div className={imageStyles}>
           <img
             onClick={onImgClick}
-            src={imgUrl}
+            src={imgUrl as any}
             alt={imgAlt ?? ""}
             style={{
               maxHeight: (size * 1.5) / 2,
